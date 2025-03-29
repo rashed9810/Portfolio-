@@ -93,6 +93,7 @@
             display: none;
             cursor: pointer;
             font-size: 1.5rem;
+            color: var(--light);
         }
 
         /* Hero Section */
@@ -596,6 +597,7 @@
         .mobile-menu .nav-links {
             flex-direction: column;
             align-items: center;
+            gap: 2rem;
         }
 
         .close-btn {
@@ -604,6 +606,7 @@
             right: 2rem;
             font-size: 1.8rem;
             cursor: pointer;
+            color: var(--light);
         }
 
         /* Objective Section */
@@ -678,6 +681,9 @@
 
             .about-img {
                 margin-bottom: 3rem;
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 300px;
             }
 
             .resume-container {
@@ -702,15 +708,30 @@
                 padding-top: 6rem;
                 height: auto;
                 padding-bottom: 4rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: 0 auto;
             }
 
             .hero h1 {
                 font-size: 2.2rem;
             }
 
-            .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+            .contact-info {
+                justify-content: center;
+            }
+
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .btn-outline {
+                margin-left: 0;
             }
 
             section {
@@ -737,6 +758,12 @@
 
             .project-links {
                 flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
         }
     </style>
@@ -795,7 +822,7 @@
                 </div>
             </div>
             
-            <div class="fade-in" style="transition-delay: 0.4s">
+            <div class="fade-in btn-container" style="transition-delay: 0.4s">
                 <a href="#projects" class="btn">View My Work</a>
                 <a href="#contact" class="btn btn-outline">Contact Me</a>
             </div>
@@ -1184,6 +1211,14 @@
         hamburger.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
 
+        // Close mobile menu when clicking a link
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
         // Scroll effect for navbar
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
@@ -1208,31 +1243,19 @@
             });
         }
 
-        window.addEventListener('scroll', checkInView);
+        // Throttle scroll event for better performance
+        let isScrolling;
+        window.addEventListener('scroll', () => {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(checkInView, 66);
+        }, false);
+
         window.addEventListener('load', checkInView);
 
         // Vanta.js Waves Background
-        VANTA.WAVES({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3a86ff,
-            shininess: 50.00,
-            waveHeight: 20.00,
-            waveSpeed: 0.95,
-            zoom: 0.75
-        });
-
-        // Handle window resize
-        function handleResize() {
-            // Reinitialize Vanta.js on resize
+        function initVanta() {
             if (typeof VANTA !== 'undefined' && typeof VANTA.WAVES !== 'undefined') {
-                VANTA.WAVES({
+                return VANTA.WAVES({
                     el: "#vanta-bg",
                     mouseControls: true,
                     touchControls: true,
@@ -1248,9 +1271,25 @@
                     zoom: 0.75
                 });
             }
+            return null;
         }
 
-        window.addEventListener('resize', handleResize);
+        let vantaEffect = initVanta();
+
+        // Handle window resize
+        function handleResize() {
+            if (vantaEffect) {
+                vantaEffect.destroy();
+            }
+            vantaEffect = initVanta();
+        }
+
+        // Debounce resize event
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(handleResize, 250);
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1294,13 +1333,31 @@
             
             // Reset form
             contactForm.reset();
+        // Initialize animations on load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkInView();
+        \});
+    </script>
+</body>
+</html>
+1201    <script>
+What do you want to ask AI next?
+
+REQUIRED
+Login with Hugging Face
+You reached the limit of free AI usage. Please login to continue.
+
+Sign in with Hugging Face
+$0
             
             // Show success message
             alert('Thank you for your message! I will get back to you soon.');
         });
 
         // Initialize animations on load
-        checkInView();
+        document.addEventListener('DOMContentLoaded', () => {
+            checkInView();
+        });
     </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: absolute; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">This website has been generated by <a href="https://enzostvs-deepsite.hf.space" style="color: #fff;" target="_blank" >DeepSite</a> <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;"></p></body>
+</body>
 </html>
