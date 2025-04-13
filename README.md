@@ -8,7 +8,10 @@ Welcome to my personal portfolio website repository! This website showcases my s
 
 Visit the live website: [MD. RASHED MIAH Portfolio](https://rashed.github.io/)
 
-Alternative deployment: [Vercel Deployment](https://portfolio-rashed9810.vercel.app/)
+Alternative deployments:
+
+- [Vercel Deployment 1](https://portfolio-md-rashed-miah-s-projects.vercel.app)
+- [Vercel Deployment 2](https://portfolio-rashed9810.vercel.app/)
 
 ## 🛠️ Features
 
