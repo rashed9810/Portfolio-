@@ -14,12 +14,25 @@
   scroll-behavior: smooth;
 }
 
+html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--dark);
   color: var(--light);
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* Three.js Canvas */
