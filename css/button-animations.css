@@ -1,0 +1,291 @@
+/* Enhanced Button Animations and Styles */
+:root {
+  --btn-primary: #3a86ff;
+  --btn-secondary: #8338ec;
+  --btn-gradient: linear-gradient(45deg, var(--btn-primary), var(--btn-secondary));
+  --btn-gradient-hover: linear-gradient(45deg, #4361ee, #7209b7);
+  --btn-shadow: 0 6px 15px rgba(58, 134, 255, 0.3);
+  --btn-shadow-hover: 0 10px 25px rgba(58, 134, 255, 0.5);
+  --btn-outline-glow: 0 0 15px rgba(58, 134, 255, 0.5);
+  --btn-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Base Button Enhancements */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.2rem;
+  background: var(--btn-gradient);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--btn-shadow);
+  text-shadow: var(--btn-text-shadow);
+  overflow: hidden;
+  min-width: 160px;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: var(--btn-shadow-hover);
+  background: var(--btn-gradient-hover);
+}
+
+.btn:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: var(--btn-shadow);
+}
+
+/* Button Shine Effect */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: rotate(30deg);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+/* Button Icon Styling */
+.btn i {
+  margin-right: 10px;
+  font-size: 1.1em;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover i {
+  transform: translateX(3px);
+}
+
+/* Download Resume Button */
+.download-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.2rem;
+  background: #4361ee;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
+  text-shadow: var(--btn-text-shadow);
+  overflow: hidden;
+  min-width: 220px;
+}
+
+.download-resume-btn i {
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.download-resume-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(67, 97, 238, 0.5);
+  background: #3a56d4;
+}
+
+.download-resume-btn:hover i {
+  animation: bounce 0.8s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Outline Button */
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--btn-primary);
+  color: var(--btn-primary);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--btn-gradient);
+  z-index: -1;
+  transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-outline:hover {
+  color: white;
+  border-color: transparent;
+  box-shadow: var(--btn-outline-glow);
+}
+
+.btn-outline:hover::before {
+  width: 100%;
+}
+
+/* Contact Button */
+.btn-contact {
+  background: linear-gradient(45deg, var(--btn-primary), #4cc9f0);
+  margin: 0 auto;
+  display: flex;
+  font-size: 1.1rem;
+  letter-spacing: 0.8px;
+  padding: 1rem 2.5rem;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(76, 201, 240, 0.3);
+}
+
+.btn-contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.btn-contact:hover::before {
+  left: 100%;
+}
+
+.btn-contact:hover {
+  background: linear-gradient(45deg, #4361ee, #4cc9f0);
+  box-shadow: 0 12px 30px rgba(76, 201, 240, 0.4);
+}
+
+/* Pulse Animation for CTA Buttons */
+.btn-primary-cta {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(58, 134, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(58, 134, 255, 0);
+  }
+}
+
+/* Button Container Enhancements */
+.btn-container {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .btn-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .btn, .download-resume-btn, .btn-contact {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Button Hover Animation for Project Cards */
+.project-card .btn {
+  align-self: flex-start;
+  transform-origin: left;
+}
+
+.project-card:hover .btn {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Social Links Enhancement */
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--light);
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+  background: var(--btn-gradient);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Effect for Buttons */
+.btn-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

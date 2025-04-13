@@ -1,860 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD. RASHED MIAH - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      MD. RASHED MIAH - Portfolio | Full Stack Developer & AI Engineer
+    </title>
+    <meta
+      name="description"
+      content="Portfolio of MD. RASHED MIAH, a Full Stack Developer & AI Engineer specializing in React.js, Next.js, Django, and deep learning frameworks."
+    />
+    <meta
+      name="keywords"
+      content="Full Stack Developer, AI Engineer, React.js, Next.js, Django, Portfolio, Web Development"
+    />
+    <meta name="author" content="MD. RASHED MIAH" />
+    <meta property="og:title" content="MD. RASHED MIAH - Portfolio" />
+    <meta
+      property="og:description"
+      content="Full Stack Developer & AI Engineer specializing in building scalable, user-centric, and AI-driven web applications."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com/" />
+    <meta
+      property="og:image"
+      content="https://your-domain.com/images/profile.jpg"
+    />
+    <link rel="canonical" href="https://your-domain.com/" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.min.js"></script>
-    <style>
-        :root {
-            --primary: #3a86ff;
-            --secondary: #8338ec;
-            --dark: #1a1a2e;
-            --dark-alt: #16213e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Three.js Canvas */
-        canvas#three-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 1rem 5%;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-decoration: none;
-            position: relative;
-            z-index: 10;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            padding-top: 80px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-info {
-            margin: 1.5rem 0;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item i {
-            color: var(--primary);
-        }
-
-        /* Buttons */
-        .btn-container {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border-color: transparent;
-        }
-
-        /* Mobile Menu */
-        .hamburger {
-            display: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(26, 26, 46, 0.98);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .mobile-menu.active {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .mobile-menu .nav-links {
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Media Queries */
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .floating-cube {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                width: 150px;
-                height: 150px;
-                margin: 2rem auto 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .btn-container {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        /* Floating cube in hero section */
-        .hero-content .floating-cube {
-            position: absolute;
-            right: 10%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            height: 200px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Form styles */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Section styling */
-        section {
-            padding: 5rem 5%;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        /* Animation classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body>
-    <!-- Three.js Canvas -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/notifications.css" />
+    <link rel="stylesheet" href="css/button-animations.css" />
+    <link rel="stylesheet" href="css/scroll-animations.css" />
+  </head>
+  <body>
     <canvas id="three-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="#home" class="logo">Rashed.</a>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#resume">Resume</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
+      <a href="#home" class="logo">Rashed.</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-container">
         <div class="close-btn" id="closeBtn">
-            <i class="fas fa-times"></i>
+          <i class="fas fa-times"></i>
         </div>
-        <div class="nav-links">
-            <a href="#home" class="mobile-link">Home</a>
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#skills" class="mobile-link">Skills</a>
-            <a href="#resume" class="mobile-link">Resume</a>
-            <a href="#projects" class="mobile-link">Projects</a>
-            <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#home" class="logo">Rashed.</a>
+        <div class="mobile-social-links">
+          <a href="https://www.linkedin.com/in/rashed9810" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="https://github.com/rashed9810" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://x.com/rashed_mahmud7" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
         </div>
+      </div>
     </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Hi, I'm <span>MD. RASHED MIAH</span></h1>
-            <p class="fade-in" style="transition-delay: 0.2s">Full Stack Developer & AI Engineer specializing in creating beautiful, responsive and AI-powered web applications.</p>
-            
-            <div class="contact-info fade-in" style="transition-delay: 0.3s">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Pallabi, Dhaka 1216</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+8801842055513</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>rashed.bcse.edu@gmail.com</span>
-                </div>
-            </div>
-            
-            <div class="fade-in btn-container" style="transition-delay: 0.4s">
-                <a href="#projects" class="btn">View My Work</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
-            </div>
+      <div class="hero-content">
+        <h1 class="fade-in">Hi, I'm <span>MD. RASHED MIAH</span></h1>
+        <p class="fade-in" style="transition-delay: 0.2s">
+          Full Stack Developer & AI Engineer specializing in building scalable,
+          user-centric, and AI-driven web applications with expertise in React,
+          Next.js, Django, and deep learning frameworks.
+        </p>
+
+        <div class="contact-info fade-in" style="transition-delay: 0.3s">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Pallabi, Dhaka 1216</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+8801842055513</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>rashed.bcse.edu@gmail.com</span>
+          </div>
         </div>
-        <div class="floating-cube" id="floating-cube"></div>
+
+        <div class="fade-in btn-container" style="transition-delay: 0.4s">
+          <a href="#projects" class="btn btn-primary-cta">
+            <i class="fas fa-laptop-code"></i> View My Work
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fas fa-paper-plane"></i> Contact Me
+          </a>
+          <a
+            href="https://drive.google.com/file/d/15j2Qz3UfZlUCO2xqwc-kF-BSKqTB3-JC/view"
+            target="_blank"
+            class="download-resume-btn btn-float"
+          >
+            <i class="fas fa-download"></i> Download Full Resume
+          </a>
+        </div>
+      </div>
+      <div class="floating-cube" id="floating-cube"></div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text fade-in">
-                <p>I'm a passionate Full Stack Developer with expertise in JavaScript, Python, and modern web technologies. I specialize in creating efficient, scalable applications with intuitive user interfaces.</p>
-                <p>With over 5 years of professional experience, I've worked on projects ranging from small business websites to complex enterprise applications. My technical skills combined with my creative problem-solving abilities allow me to bridge the gap between design and technology.</p>
-                <a href="#contact" class="btn" style="margin-top: 2rem;">Get In Touch</a>
-            </div>
+      <h2 class="section-title" data-scroll="fade-up">About Me</h2>
+      <div class="about-content">
+        <div class="about-text" data-scroll="fade-right" data-duration="slow">
+          <p>
+            Passionate software engineer with extensive hands-on experience in
+            React, Next.js, Django, Node.js, and machine learning frameworks.
+            Passionate about creating scalable, user-centric applications and
+            driving innovation.
+          </p>
+          <p>
+            With experience in both frontend and backend development, I've
+            worked on projects ranging from real-time collaborative document
+            editors to cross-border money transfer platforms. My technical
+            skills combined with my creative problem-solving abilities allow me
+            to bridge the gap between design and technology.
+          </p>
+          <a href="#contact" class="btn" style="margin-top: 2rem"
+            >Get In Touch</a
+          >
         </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
-        <h2 class="section-title">My Skills</h2>
-        <div class="skills-container fade-in">
-            <div class="skill-category">
-                <h3>Frontend</h3>
-                <p>HTML, CSS, JavaScript</p>
-                <p>React, Vue, Angular</p>
-                <p>Tailwind, Bootstrap</p>
-            </div>
-            <div class="skill-category">
-                <h3>Backend</h3>
-                <p>Node.js, Express</p>
-                <p>Python, Django</p>
-                <p>PHP, Laravel</p>
-            </div>
-            <div class="skill-category">
-                <h3>Database</h3>
-                <p>MySQL, PostgreSQL</p>
-                <p>MongoDB, Firebase</p>
-                <p>GraphQL, REST APIs</p>
-            </div>
+      <h2 class="section-title" data-scroll="fade-up">My Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category" data-scroll="zoom-in" data-delay="100">
+          <h3>Languages</h3>
+          <p>JavaScript, Python, C, C++</p>
+          <p>SQL, Java, TypeScript</p>
         </div>
+        <div class="skill-category" data-scroll="zoom-in" data-delay="200">
+          <h3>Frontend</h3>
+          <p>React.js, Next.js, CSS</p>
+          <p>Tailwind, RESTful APIs</p>
+          <p>RTK Query, Tanstack query</p>
+        </div>
+        <div class="skill-category" data-scroll="zoom-in" data-delay="300">
+          <h3>Backend</h3>
+          <p>Flask, Django, Node.js</p>
+          <p>Express Js, MongoDB</p>
+          <p>PostgreSQL, SQLAlchemy</p>
+        </div>
+        <div class="skill-category" data-scroll="zoom-in" data-delay="400">
+          <h3>AI/ML & DevOps</h3>
+          <p>Scikit-Learn, OpenCV</p>
+          <p>NumPy, Pandas, CNN, RNN, LSTM</p>
+          <p>Git, Github, Docker</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume">
-        <h2 class="section-title">My Resume</h2>
-        <div class="resume-timeline fade-in">
-            <div class="timeline-item">
-                <div class="timeline-date">2022 - Present</div>
-                <div class="timeline-content">
-                    <h3>Senior Full Stack Developer</h3>
-                    <p>Tech Solutions Inc.</p>
-                    <p>Developed and maintained multiple web applications for enterprise clients, leading a team of 5 developers.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2019 - 2022</div>
-                <div class="timeline-content">
-                    <h3>Full Stack Developer</h3>
-                    <p>Digital Innovations</p>
-                    <p>Built custom web applications for clients across various industries, focusing on responsive design and user experience.</p>
-                </div>
-            </div>
-            <a href="#" class="btn" style="margin-top: 2rem; display: inline-block;">Download Full Resume</a>
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+      <h2 class="section-title" data-scroll="fade-up">Education</h2>
+      <div class="education-container">
+        <div class="education-item" data-scroll="fade-left" data-delay="200">
+          <h3>B.Sc. in Computer Science and Engineering</h3>
+          <p class="institution">
+            International University of Business Agriculture and Technology
+            (IUBAT)
+          </p>
+          <p class="date">May 2018 – April 2022</p>
+          <p class="description">CGPA: 3.43 / 4.00</p>
+          <p class="description">
+            Thesis on Lung X ray disease detection through Deep learning.
+          </p>
         </div>
+        <div class="education-item" data-scroll="fade-left" data-delay="400">
+          <h3>Higher Secondary Certificate (HSC) - Science</h3>
+          <p class="institution">Police Lines School and College Rangpur</p>
+          <p class="date">June 2014 – April 2016</p>
+          <p class="description">GPA: 5.00 / 5.00</p>
+        </div>
+        <div class="education-item">
+          <h3>Secondary School Certificate (SSC) - Science</h3>
+          <p class="institution">Ambagan High School</p>
+          <p class="date">January 2013 - February 2014</p>
+          <p class="description">GPA: 5.00 / 5.00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="resume">
+      <h2 class="section-title" data-scroll="fade-up">Work Experience</h2>
+      <div class="resume-timeline">
+        <div class="timeline-item" data-scroll="fade-up" data-delay="100">
+          <div class="timeline-date">July 2024 - January 2025</div>
+          <div class="timeline-content">
+            <h3>Frontend Developer</h3>
+            <p>Spands SPS LTD, Gravesend, UK</p>
+            <p>
+              Designed and implemented the Diasporex user portal from scratch,
+              leveraging React.js, Next.js and Tailwind CSS for an intuitive and
+              responsive UI.
+            </p>
+            <p>
+              Implemented JWT and Google Auth, reducing login errors by 15%.
+              Contributed to API integrations for multi-currency transfers.
+            </p>
+            <p>
+              Collaborated with UX/UI and API teams to streamline product design
+              and integration.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item" data-scroll="fade-up" data-delay="300">
+          <div class="timeline-date">June 2023 - May 2024</div>
+          <div class="timeline-content">
+            <h3>Associate AI Engineer</h3>
+            <p>Next Solution Lab, Mirpur DOHS, Bangladesh</p>
+            <p>
+              Implemented findings from AI research papers and generated ideas
+              for practical applications.
+            </p>
+            <p>
+              Developed a responsive UI with React and FastAPI, reducing data
+              retrieval time by 20%.
+            </p>
+            <p>
+              Collaborated with the backend team to develop and optimize RESTful
+              APIs using Django, improving data processing efficiency and
+              reducing response times.
+            </p>
+            <p>
+              Prepared datasets for research and development projects,
+              supporting AI-driven insights and model training.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item" data-scroll="fade-up" data-delay="500">
+          <div class="timeline-date">September 2022 - December 2022</div>
+          <div class="timeline-content">
+            <h3>Research Assistant and Instructor (Python)</h3>
+            <p>Imranslab, Bangladesh</p>
+            <p>
+              Improved student coding proficiency by 30% through hands-on Python
+              workshops.
+            </p>
+            <p>
+              Maintained IT lab systems, ensuring a smooth learning experience
+              for students.
+            </p>
+            <p>
+              Researched and developed solutions for biomedical image processing
+              challenges using AI and Machine learning.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2 class="section-title">My Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card fade-in">
-                <h3>E-commerce Platform</h3>
-                <p>A full-featured online store with custom CMS and payment integration.</p>
-                <a href="#" class="btn btn-outline" style="margin-top: 1rem;">View Project</a>
-            </div>
-            <div class="project-card fade-in" style="transition-delay: 0.1s">
-                <h3>Task Management App</h3>
-                <p>Collaborative task management with real-time updates and team features.</p>
-                <a href="#" class="btn btn-outline" style="margin-top: 1rem;">View Project</a>
-            </div>
-            <div class="project-card fade-in" style="transition-delay: 0.2s">
-                <h3>AI Content Generator</h3>
-                <p>GPT-powered content creation tool with customizable templates.</p>
-                <a href="#" class="btn btn-outline" style="margin-top: 1rem;">View Project</a>
-            </div>
+      <h2 class="section-title" data-scroll="fade-up">My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card" data-scroll="fade-up" data-delay="100">
+          <h3>Diasporex - Cross-Border Money Transfer Platform</h3>
+          <p>
+            Spearheaded frontend development using Next.js and Tailwind CSS,
+            delivering a scalable and user-centric interface. Integrated secure
+            APIs for real-time currency exchange rates and multi-currency
+            transactions. Facilitated a peer-to-peer transfer model that
+            supported over 10 currencies, improving operational efficiency.
+          </p>
+          <a
+            href="https://diasporex.io/"
+            target="_blank"
+            class="btn btn-outline"
+            style="margin-top: 1rem"
+          >
+            <i class="fas fa-external-link-alt"></i> View Project
+          </a>
         </div>
+        <div class="project-card" data-scroll="fade-up" data-delay="200">
+          <h3>Real-Time Collaborative Document Editor</h3>
+          <p>
+            Built real-time collaboration features like live cursors and change
+            tracking using React and WebSockets. Designed backend infrastructure
+            with Node.js and MongoDB, enabling seamless version control for
+            documents. Focused on creating custom features like AI-powered
+            grammar suggestions and multi-language support.
+          </p>
+          <a href="#projects" class="btn btn-outline" style="margin-top: 1rem">
+            <i class="fas fa-external-link-alt"></i> View Project
+          </a>
+        </div>
+        <div class="project-card" data-scroll="fade-up" data-delay="300">
+          <h3>Lung Disease X-ray Image Detection</h3>
+          <p>
+            Developed a deep learning model to detect lung diseases such as
+            COVID-19, emphysema, mass, pneumonia, and TB from X-ray images. The
+            model was trained on a dataset of over 10,000 X-ray images, & it
+            achieved an accuracy of over 95% on a held-out test set.
+          </p>
+          <a href="#projects" class="btn btn-outline" style="margin-top: 1rem">
+            <i class="fas fa-external-link-alt"></i> View Project
+          </a>
+        </div>
+        <div class="project-card" data-scroll="fade-up" data-delay="400">
+          <h3>Local Sports League Organizer</h3>
+          <p>
+            Developed a full-stack web application using ReactJS, Django, and
+            PostgreSQL to manage local sports leagues and tournaments.
+            Implemented features like user authentication, team management,
+            automated scheduling, and real-time score updates.
+          </p>
+          <a href="#projects" class="btn btn-outline" style="margin-top: 1rem">
+            <i class="fas fa-external-link-alt"></i> View Project
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <h2 class="section-title">Get In Touch</h2>
-        <form id="contactForm" class="contact-form fade-in">
-            <div class="form-group">
-                <input type="text" id="name" class="form-control" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" class="form-control" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="subject" class="form-control" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-                <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
+      <h2 class="section-title" data-scroll="fade-up">Get In Touch</h2>
+      <form
+        id="contactForm"
+        class="contact-form"
+        data-scroll="fade-up"
+        data-delay="200"
+      >
+        <div class="form-group">
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            placeholder="Your Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="Your Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="subject"
+            class="form-control"
+            placeholder="Subject"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            id="message"
+            class="form-control"
+            placeholder="Your Message"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-contact">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
     </section>
 
     <!-- Footer -->
-    <footer class="fade-in">
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/rashed9810" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/rashed9810" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-codepen"></i></a>
-        </div>
-        <p class="copyright">© 2023 MD. RASHED MIAH. All Rights Reserved.</p>
+    <footer data-scroll="fade-up">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/rashed9810" target="_blank"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a href="https://github.com/rashed9810" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://x.com/rashed_mahmud7" target="_blank"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <!-- Remove or update with your actual CodePen link when available -->
+        <!-- <a href="https://codepen.io/yourusername" target="_blank"><i class="fab fa-codepen"></i></a> -->
+      </div>
+      <p class="copyright">© 2024 MD. RASHED MIAH. All Rights Reserved.</p>
     </footer>
 
-    <!-- Three.js Implementation -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Basic Three.js setup
-            const canvas = document.getElementById('three-canvas');
-            
-            function getWindowSize() {
-                return {
-                    width: window.innerWidth,
-                    height: window.innerHeight
-                };
-            }
-            
-            let scene, camera, renderer, cube, particles, particleSystem;
-            const clock = new THREE.Clock();
-            const sizes = getWindowSize();
-            
-            function init() {
-                // Scene
-                scene = new THREE.Scene();
-                
-                // Camera
-                camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
-                camera.position.z = 5;
-                
-                // Renderer
-                renderer = new THREE.WebGLRenderer({
-                    canvas: canvas,
-                    antialias: true,
-                    alpha: true
-                });
-                renderer.setSize(sizes.width, sizes.height);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                renderer.setClearColor(0x000000, 0);
-                
-                createHeroCube();
-                createParticles();
-                
-                window.addEventListener('resize', onWindowResize);
-                animate();
-            }
-            
-            function createHeroCube() {
-                const geometry = new THREE.BoxGeometry(1, 1, 1);
-                const material = new THREE.MeshBasicMaterial({
-                    color: new THREE.Color().setHSL(0.6, 0.5, 0.5),
-                    wireframe: true,
-                    transparent: true,
-                    opacity: 0.8
-                });
-                
-                cube = new THREE.Mesh(geometry, material);
-                scene.add(cube);
-                
-                updateCubePosition();
-            }
-            
-            function updateCubePosition() {
-                if (window.innerWidth > 992) {
-                    const cubeContainer = document.querySelector('.floating-cube').getBoundingClientRect();
-                    const targetX = (cubeContainer.left + (cubeContainer.width / 2)) / window.innerWidth * 4 - 2;
-                    const targetY = -(cubeContainer.top + (cubeContainer.height / 2)) / window.innerHeight * 4 + 2;
-                    
-                    cube.position.set(targetX, targetY, 0);
-                    cube.scale.set(1.2, 1.2, 1.2);
-                } else {
-                    cube.position.set(0, -1, 0);
-                    cube.scale.set(1, 1, 1);
-                }
-            }
-            
-            function createParticles() {
-                const particleCount = 500;
-                const particles = new THREE.BufferGeometry();
-                
-                const positions = new Float32Array(particleCount * 3);
-                const colors = new Float32Array(particleCount * 3);
-                const sizes = new Float32Array(particleCount);
-                
-                const color = new THREE.Color();
-                
-                for (let i = 0; i < particleCount; i++) {
-                    positions[i * 3] = (Math.random() - 0.5) * 10;
-                    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
-                    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
-                    
-                    color.setHSL(Math.random(), 0.5, 0.5);
-                    colors[i * 3] = color.r;
-                    colors[i * 3 + 1] = color.g;
-                    colors[i * 3 + 2] = color.b;
-                    
-                    sizes[i] = Math.random() * 0.2 + 0.1;
-                }
-                
-                particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-                particles.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-                
-                const particleMaterial = new THREE.PointsMaterial({
-                    size: 0.1,
-                    sizeAttenuation: true,
-                    transparent: true,
-                    opacity: 0.8,
-                    vertexColors: true,
-                    blending: THREE.AdditiveBlending
-                });
-                
-                particleSystem = new THREE.Points(particles, particleMaterial);
-                scene.add(particleSystem);
-            }
-            
-            function onWindowResize() {
-                const newSizes = getWindowSize();
-                
-                camera.aspect = newSizes.width / newSizes.height;
-                camera.updateProjectionMatrix();
-                
-                renderer.setSize(newSizes.width, newSizes.height);
-                updateCubePosition();
-            }
-            
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                const elapsedTime = clock.getElapsedTime();
-                
-                if (cube) {
-                    cube.rotation.x = elapsedTime * 0.2;
-                    cube.rotation.y = elapsedTime * 0.3;
-                    cube.rotation.z = elapsedTime * 0.1;
-                }
-                
-                if (particleSystem) {
-                    particleSystem.rotation.x = elapsedTime * 0.05;
-                    particleSystem.rotation.y = elapsedTime * 0.02;
-                    
-                    const positions = particleSystem.geometry.attributes.position.array;
-                    for (let i = 0; i < positions.length; i += 3) {
-                        positions[i + 1] += 0.002;
-                        if (positions[i + 1] > 5) {
-                            positions[i + 1] = -5;
-                        }
-                    }
-                    particleSystem.geometry.attributes.position.needsUpdate = true;
-                }
-                
-                renderer.render(scene, camera);
-            }
-            
-            // Initialize Three.js
-            init();
-
-            // Improved Mobile Menu Toggle
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const closeBtn = document.getElementById('closeBtn');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            function toggleMenu() {
-                mobileMenu.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-                
-                // Close hamburger when a link is clicked (for better UX)
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.remove('active');
-                        document.body.style.overflow = '';
-                    });
-                });
-            }
-
-            hamburger.addEventListener('click', toggleMenu);
-            closeBtn.addEventListener('click', toggleMenu);
-
-            // Improved Scroll effect for navbar
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Improved Animation on scroll
-            const fadeElements = document.querySelectorAll('.fade-in');
-
-            function checkInView() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('active');
-                    }
-                });
-            }
-
-            let isScrolling;
-            window.addEventListener('scroll', function() {
-                window.clearTimeout(isScrolling);
-                isScrolling = setTimeout(checkInView, 66);
-            }, false);
-
-            // Initial check
-            checkInView();
-
-            // Improved Smooth scrolling for all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    // Check if the href is just "#" (prevent default behavior for # only)
-                    if (this.getAttribute('href') === '#') {
-                        e.preventDefault();
-                        return;
-                    }
-                    
-                    // For all other anchor links
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Improved Contact Form Handling
-            const contactForm = document.getElementById('contactForm');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form values
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    
-                    // Simple validation
-                    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-                        alert('Please fill in all fields.');
-                        return;
-                    }
-                    
-                    // Email validation
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        alert('Please enter a valid email address.');
-                        return;
-                    }
-                    
-                    // Create a form data object (simulating what you'd send to a server)
-                    const formData = {
-                        name: name.trim(),
-                        email: email.trim(),
-                        subject: subject.trim(),
-                        message: message.trim(),
-                        timestamp: new Date().toISOString()
-                    };
-                    
-                    // In a real application, you would send this data to a server
-                    console.log('Form submitted:', formData);
-                    
-                    // Show success message
-                    const successMessage = document.createElement('div');
-                    successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-                    successMessage.style.color = '#3a86ff';
-                    successMessage.style.marginTop = '1rem';
-                    successMessage.style.textAlign = 'center';
-                    
-                    // Check if a message already exists and remove it
-                    const existingMessage = contactForm.querySelector('.form-message');
-                    if (existingMessage) {
-                        existingMessage.remove();
-                    }
-                    
-                    successMessage.classList.add('form-message');
-                    contactForm.appendChild(successMessage);
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Remove the message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                });
-            }
-
-            // Handle download resume button
-            const downloadResumeBtn = document.querySelector('.resume .btn');
-            if (downloadResumeBtn) {
-                downloadResumeBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('This would typically download your resume PDF. In a real implementation, link to your actual resume file.');
-                });
-            }
-
-            // Handle view project buttons
-            const projectBtns = document.querySelectorAll('.project-card .btn');
-            projectBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('This would typically open a modal with project details or take you to a live demo. Implement as needed.');
-                });
-            });
-        });
-    </script>
-</body>
+    <!-- JavaScript Files -->
+    <script src="js/email-service.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/three-animation.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/scroll-animations.js"></script>
+  </body>
 </html>
