@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="css/notifications.css" />
     <link rel="stylesheet" href="css/button-animations.css" />
     <link rel="stylesheet" href="css/scroll-animations.css" />
+    <link rel="stylesheet" href="css/fix-gap.css" />
   </head>
   <body>
     <canvas id="three-canvas"></canvas>
@@ -95,7 +96,9 @@
       <!-- Hero Section -->
       <section id="home" class="hero">
         <div class="hero-content">
-          <h1 class="fade-in">Hi, I'm <span>MD. RASHED MIAH</span></h1>
+          <h1 class="fade-in">
+            Hi, I'm <span class="name-highlight">MD. RASHED MIAH</span>
+          </h1>
           <p class="fade-in" style="transition-delay: 0.2s">
             Full Stack Developer & AI Engineer specializing in building
             scalable, user-centric, and AI-driven web applications with
@@ -297,6 +300,29 @@
         <h2 class="section-title" data-scroll="fade-up">My Projects</h2>
         <div class="projects-grid">
           <div class="project-card" data-scroll="fade-up" data-delay="100">
+            <h3>HEIC to JPG Converter</h3>
+            <p>
+              Built a modern, elegant web application for converting HEIC/HEIF
+              images (commonly used by Apple devices) to the universally
+              compatible JPG format. Implemented features like drag & drop
+              upload, advanced image processing options (quality control,
+              resize, rotate), live preview, and secure local processing.
+            </p>
+            <p>
+              Developed with React, FastAPI, Tailwind CSS, and Python Pillow,
+              following a clean client-server architecture with RESTful API
+              endpoints for image processing.
+            </p>
+            <a
+              href="https://github.com/rashed9810/heic-to-jpg-converter.git"
+              target="_blank"
+              class="btn btn-outline"
+              style="margin-top: 1rem"
+            >
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+          <div class="project-card" data-scroll="fade-up" data-delay="200">
             <h3>Diasporex - Cross-Border Money Transfer Platform</h3>
             <p>
               Spearheaded frontend development using Next.js and Tailwind CSS,
@@ -315,7 +341,7 @@
               <i class="fas fa-external-link-alt"></i> View Project
             </a>
           </div>
-          <div class="project-card" data-scroll="fade-up" data-delay="200">
+          <div class="project-card" data-scroll="fade-up" data-delay="300">
             <h3>Real-Time Collaborative Document Editor</h3>
             <p>
               Built real-time collaboration features like live cursors and
@@ -332,7 +358,7 @@
               <i class="fas fa-external-link-alt"></i> View Project
             </a>
           </div>
-          <div class="project-card" data-scroll="fade-up" data-delay="300">
+          <div class="project-card" data-scroll="fade-up" data-delay="400">
             <h3>Lung Disease X-ray Image Detection</h3>
             <p>
               Developed a deep learning model to detect lung diseases such as
@@ -348,13 +374,19 @@
               <i class="fas fa-external-link-alt"></i> View Project
             </a>
           </div>
-          <div class="project-card" data-scroll="fade-up" data-delay="400">
+          <div class="project-card" data-scroll="fade-up" data-delay="500">
             <h3>Local Sports League Organizer</h3>
             <p>
               Developed a full-stack web application using ReactJS, Django, and
               PostgreSQL to manage local sports leagues and tournaments.
               Implemented features like user authentication, team management,
               automated scheduling, and real-time score updates.
+            </p>
+            <p>
+              Designed a responsive frontend and a scalable backend with a
+              relational database, showcasing modern web development skills.
+              Delivered a unique, community-focused solution, highlighting
+              creativity and technical expertise.
             </p>
             <a
               href="#projects"
@@ -433,7 +465,7 @@
         <!-- Remove or update with your actual CodePen link when available -->
         <!-- <a href="https://codepen.io/yourusername" target="_blank"><i class="fab fa-codepen"></i></a> -->
       </div>
-      <p class="copyright">© 2024 MD. RASHED MIAH. All Rights Reserved.</p>
+      <p class="copyright">© 2025 MD. RASHED MIAH. All Rights Reserved.</p>
     </footer>
 
     <!-- JavaScript Files -->

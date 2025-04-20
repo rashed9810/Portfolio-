@@ -169,7 +169,7 @@
 /* Projects Section */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -183,6 +183,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-card:hover {
@@ -216,16 +217,18 @@
   z-index: 1;
   padding-top: 6rem;
   padding-bottom: 6rem;
+  margin-bottom: 0;
 }
 
 /* Footer */
 footer {
   background: var(--dark-alt);
-  padding: 3rem 5% 4rem 5%;
+  padding: 3rem 5% 3rem 5%;
   text-align: center;
   position: relative;
   overflow: hidden;
   margin-top: 0;
+  margin-bottom: 0;
   width: 100%;
   left: 0;
   right: 0;
@@ -261,12 +264,22 @@ footer {
 .copyright {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* Media Queries */
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 992px) {
-  .skills-container,
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -280,5 +293,12 @@ footer {
 
   .timeline-item {
     padding-left: 2rem;
+  }
+
+  .project-card .btn {
+    align-self: center;
+    width: 100%;
+    max-width: 250px;
+    margin-top: 0.5rem;
   }
 }

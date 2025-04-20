@@ -1,0 +1,30 @@
+/* Additional CSS to fix the gap at the bottom without affecting Three.js */
+
+/* Fix for the gap at the bottom */
+html::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* Small height to cover any potential gap */
+  background-color: var(--dark-alt);
+  z-index: -1;
+}
+
+/* Ensure no extra space after the copyright text */
+.copyright {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Fix for the scrollbar */
+body::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
