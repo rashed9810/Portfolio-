@@ -135,7 +135,7 @@ canvas#three-canvas {
 .hero h1 {
   font-size: 3rem; /* Reduced from 3.5rem for better balance */
   margin-bottom: 1.2rem;
-  line-height: 1.2;
+  line-height: 1.4;
   font-weight: 700;
 }
 
@@ -146,9 +146,11 @@ canvas#three-canvas {
   color: transparent;
   font-weight: 700;
   letter-spacing: 0.5px;
-  display: inline-block;
+  display: block;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
   padding: 0 2px;
+  margin-top: 5px;
+  font-size: 2.8rem;
 }
 
 .hero p {
@@ -684,6 +686,12 @@ section {
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
+  }
+
+  .hero h1 .name-highlight {
+    font-size: 2.1rem;
+    margin-top: 8px;
+    line-height: 1.3;
   }
 
   .btn-container {
