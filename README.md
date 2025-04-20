@@ -10,8 +10,7 @@ Visit the live website: [MD. RASHED MIAH Portfolio](https://rashed.github.io/)
 
 Alternative deployments:
 
-- [Vercel Deployment 1](https://portfolio-md-rashed-miah-s-projects.vercel.app)
-- [Vercel Deployment 2](https://portfolio-rashed9810.vercel.app/)
+- [Vercel Deployment](https://portfolio-rashed-five.vercel.app/)
 
 ## 🛠️ Features
 
@@ -37,8 +36,8 @@ Alternative deployments:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/rashed9810/portfolio-website.git
-   cd portfolio-website
+   git clone https://github.com/rashed9810/Portfolio-.git
+   cd Portfolio-
    ```
 
 2. **Run locally**
@@ -52,16 +51,20 @@ Alternative deployments:
 ## 📂 Project Structure
 
 ```
-├── assets/
-│   ├── css/
-│   ├── images/
-│   ├── js/
-│   └── resume/
 ├── index.html
 ├── css/
-│   └── styles.css
+│   ├── styles.css
+│   ├── sections.css
+│   ├── button-animations.css
+│   ├── scroll-animations.css
+│   ├── notifications.css
+│   └── fix-gap.css
 ├── js/
-│   └── main.js
+│   ├── main.js
+│   ├── three-animation.js
+│   ├── animation.js
+│   ├── scroll-animations.js
+│   └── email-service.js
 └── README.md
 ```
 
@@ -99,8 +102,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 MD. RASHED MIAH
 Email: rashed.bcse.edu@gmail.com
-LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/your-linkedin)
-GitHub: [GitHub Profile](https://github.com/your-github)
+LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/rashed9810)
+GitHub: [GitHub Profile](https://github.com/rashed9810)
 
 ---
 
